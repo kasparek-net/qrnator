@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, type ReactNode } from "react";
 import type {
   CornerDotType,
   CornerSquareType,
@@ -8,7 +8,7 @@ import type {
   ErrorCorrection,
   QRStyle,
 } from "@/lib/qr-style";
-import { ColorPicker, Field, Input, Select, Switch } from "./ui";
+import { ColorPicker, Field, Input, Label, Select, Switch } from "./ui";
 import { Upload, X } from "lucide-react";
 import { useI18n } from "@/lib/i18n-context";
 import type { Key } from "@/lib/i18n";
@@ -123,6 +123,129 @@ const presets: { key: Key; partial: Partial<QRStyle> }[] = [
   },
 ];
 
+const dotCorners: Record<DotType, [boolean, boolean, boolean, boolean]> = {
+  square: [false, false, false, false],
+  dots: [false, false, false, false],
+  rounded: [true, true, true, true],
+  "extra-rounded": [true, true, true, true],
+  classy: [true, false, true, false],
+  "classy-rounded": [true, true, true, false],
+};
+
+const dotRadius: Record<DotType, number> = {
+  square: 0,
+  dots: 0,
+  rounded: 2,
+  "extra-rounded": 3.5,
+  classy: 3.5,
+  "classy-rounded": 3.5,
+};
+
+function rrPath(
+  x: number,
+  y: number,
+  s: number,
+  r: number,
+  c: [boolean, boolean, boolean, boolean],
+) {
+  const [tl, tr, br, bl] = c;
+  return (
+    `M${x + (tl ? r : 0)},${y}` +
+    `L${x + s - (tr ? r : 0)},${y}` +
+    (tr ? `Q${x + s},${y} ${x + s},${y + r}` : "") +
+    `L${x + s},${y + s - (br ? r : 0)}` +
+    (br ? `Q${x + s},${y + s} ${x + s - r},${y + s}` : "") +
+    `L${x + (bl ? r : 0)},${y + s}` +
+    (bl ? `Q${x},${y + s} ${x},${y + s - r}` : "") +
+    `L${x},${y + (tl ? r : 0)}` +
+    (tl ? `Q${x},${y} ${x + r},${y}` : "") +
+    "Z"
+  );
+}
+
+function DotSwatch({ type }: { type: DotType }) {
+  const s = 7,
+    gap = 2,
+    off = 1.5;
+  const cells: ReactNode[] = [];
+  for (let r = 0; r < 3; r++) {
+    for (let c = 0; c < 3; c++) {
+      const x = off + c * (s + gap);
+      const y = off + r * (s + gap);
+      const key = `${r}-${c}`;
+      cells.push(
+        type === "dots" ? (
+          <circle key={key} cx={x + s / 2} cy={y + s / 2} r={s / 2} />
+        ) : (
+          <path key={key} d={rrPath(x, y, s, dotRadius[type], dotCorners[type])} />
+        ),
+      );
+    }
+  }
+  return (
+    <svg viewBox="0 0 28 28" className="w-7 h-7" fill="currentColor">
+      {cells}
+    </svg>
+  );
+}
+
+function CornerSquareSwatch({ type }: { type: CornerSquareType }) {
+  return (
+    <svg
+      viewBox="0 0 28 28"
+      className="w-7 h-7"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={4}
+    >
+      {type === "dot" ? (
+        <circle cx={14} cy={14} r={11} />
+      ) : (
+        <rect x={3} y={3} width={22} height={22} rx={type === "extra-rounded" ? 7 : 0} />
+      )}
+    </svg>
+  );
+}
+
+function CornerDotSwatch({ type }: { type: CornerDotType }) {
+  return (
+    <svg viewBox="0 0 28 28" className="w-7 h-7" fill="currentColor">
+      {type === "dot" ? (
+        <circle cx={14} cy={14} r={6} />
+      ) : (
+        <rect x={8} y={8} width={12} height={12} />
+      )}
+    </svg>
+  );
+}
+
+function ShapeOption({
+  selected,
+  onClick,
+  label,
+  children,
+}: {
+  selected: boolean;
+  onClick: () => void;
+  label: string;
+  children: ReactNode;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`flex flex-col items-center gap-1 rounded-lg border px-1 py-2 transition cursor-pointer ${
+        selected
+          ? "border-[var(--primary)] bg-[var(--accent)] ring-1 ring-[var(--primary)] text-[var(--foreground)]"
+          : "border-[var(--border)] bg-[var(--card)] text-[var(--muted)] hover:border-[var(--primary)] hover:text-[var(--foreground)]"
+      }`}
+    >
+      {children}
+      <span className="text-[10px] leading-tight text-center">{label}</span>
+    </button>
+  );
+}
+
 export function StylePanel({
   style,
   onChange,
@@ -167,20 +290,21 @@ export function StylePanel({
       <section>
         <h3 className="text-sm font-semibold mb-3">{t("style.dots")}</h3>
         <div className="space-y-3">
-          <Field label={t("style.dotShape")}>
-            <Select
-              value={style.dotStyle}
-              onChange={(e) =>
-                onChange({ ...style, dotStyle: e.target.value as DotType })
-              }
-            >
+          <div>
+            <Label>{t("style.dotShape")}</Label>
+            <div className="grid grid-cols-3 gap-2">
               {dotStyles.map((d) => (
-                <option key={d.value} value={d.value}>
-                  {t(d.key)}
-                </option>
+                <ShapeOption
+                  key={d.value}
+                  selected={style.dotStyle === d.value}
+                  onClick={() => onChange({ ...style, dotStyle: d.value })}
+                  label={t(d.key)}
+                >
+                  <DotSwatch type={d.value} />
+                </ShapeOption>
               ))}
-            </Select>
-          </Field>
+            </div>
+          </div>
           <ColorPicker
             label={t("style.color1")}
             value={style.dotColor}
@@ -211,41 +335,39 @@ export function StylePanel({
 
       <section>
         <h3 className="text-sm font-semibold mb-3">{t("style.corners")}</h3>
-        <div className="grid grid-cols-2 gap-3">
-          <Field label={t("style.frameShape")}>
-            <Select
-              value={style.cornerSquareStyle}
-              onChange={(e) =>
-                onChange({
-                  ...style,
-                  cornerSquareStyle: e.target.value as CornerSquareType,
-                })
-              }
-            >
+        <div className="space-y-3">
+          <div>
+            <Label>{t("style.frameShape")}</Label>
+            <div className="grid grid-cols-3 gap-2">
               {cornerSquareStyles.map((d) => (
-                <option key={d.value} value={d.value}>
-                  {t(d.key)}
-                </option>
+                <ShapeOption
+                  key={d.value}
+                  selected={style.cornerSquareStyle === d.value}
+                  onClick={() =>
+                    onChange({ ...style, cornerSquareStyle: d.value })
+                  }
+                  label={t(d.key)}
+                >
+                  <CornerSquareSwatch type={d.value} />
+                </ShapeOption>
               ))}
-            </Select>
-          </Field>
-          <Field label={t("style.centerShape")}>
-            <Select
-              value={style.cornerDotStyle}
-              onChange={(e) =>
-                onChange({
-                  ...style,
-                  cornerDotStyle: e.target.value as CornerDotType,
-                })
-              }
-            >
+            </div>
+          </div>
+          <div>
+            <Label>{t("style.centerShape")}</Label>
+            <div className="grid grid-cols-3 gap-2">
               {cornerDotStyles.map((d) => (
-                <option key={d.value} value={d.value}>
-                  {t(d.key)}
-                </option>
+                <ShapeOption
+                  key={d.value}
+                  selected={style.cornerDotStyle === d.value}
+                  onClick={() => onChange({ ...style, cornerDotStyle: d.value })}
+                  label={t(d.key)}
+                >
+                  <CornerDotSwatch type={d.value} />
+                </ShapeOption>
               ))}
-            </Select>
-          </Field>
+            </div>
+          </div>
         </div>
         <div className="grid grid-cols-2 gap-3 mt-3">
           <ColorPicker
