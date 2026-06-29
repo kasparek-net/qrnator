@@ -20,7 +20,7 @@ const I18nContext = createContext<Ctx | null>(null);
 const STORAGE = "qrnator-lang";
 
 export function I18nProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>("cs");
+  const [locale, setLocaleState] = useState<Locale>("en");
 
   useEffect(() => {
     try {

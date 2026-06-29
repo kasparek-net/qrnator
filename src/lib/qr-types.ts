@@ -131,7 +131,7 @@ export function encodePayload(p: QRPayload): string {
 
 export const defaultPayloads: Record<QRType, QRPayload> = {
   link: { type: "link", url: "https://qr.kasparek.net" },
-  text: { type: "text", text: "Ahoj!" },
+  text: { type: "text", text: "Hello!" },
   email: { type: "email", to: "", subject: "", body: "" },
   phone: { type: "phone", phone: "" },
   sms: { type: "sms", phone: "", message: "" },

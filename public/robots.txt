@@ -97,6 +97,6 @@ Disallow: /
 User-agent: *
 Allow: /
 Crawl-delay: 10
-Disallow: /historie
+Disallow: /history
 
 Sitemap: /sitemap.xml

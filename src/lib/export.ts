@@ -47,7 +47,7 @@ export async function exportQR(
     const x = (pageW - size) / 2;
     pdf.addImage(dataUrl, "PNG", x, 30, size, size);
     pdf.setFontSize(10);
-    pdf.text("Vygenerováno na qr.kasparek.net", pageW / 2, 30 + size + 12, {
+    pdf.text("Generated at qr.kasparek.net", pageW / 2, 30 + size + 12, {
       align: "center",
     });
     pdf.save(`${baseName}.pdf`);

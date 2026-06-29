@@ -53,7 +53,7 @@ export function Header() {
             <span className="hidden sm:inline">{t("nav.scanner")}</span>
           </Link>
           <Link
-            href="/historie"
+            href="/history"
             className="px-2 sm:px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--accent)] transition"
           >
             {t("nav.history")}
