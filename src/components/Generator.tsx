@@ -17,7 +17,6 @@ import {
   Download,
   ChevronDown,
   Save,
-  QrCode,
 } from "lucide-react";
 import { QRPreview } from "./QRPreview";
 import { QRForm } from "./QRForms";
@@ -113,18 +112,6 @@ export function Generator({
 
   return (
     <div className="rounded-[28px] border border-[var(--border)] bg-[var(--card)] shadow-[0_1px_2px_rgba(0,0,0,0.04),0_18px_50px_rgba(0,0,0,0.08)] p-5 sm:p-8">
-      <div className="flex items-center gap-3 mb-7">
-        <div className="w-11 h-11 rounded-[13px] flex items-center justify-center text-white bg-[var(--primary)] shadow-md">
-          <QrCode className="w-6 h-6" />
-        </div>
-        <div>
-          <div className="text-xl font-semibold tracking-tight leading-tight text-[var(--foreground)]">
-            QR Studio
-          </div>
-          <div className="text-sm text-[var(--muted)]">{t("gen.subtitle")}</div>
-        </div>
-      </div>
-
       <div className="grid lg:grid-cols-[minmax(0,1fr)_320px] gap-7">
         <div className="space-y-6 min-w-0 order-2 lg:order-1">
           <div className="flex flex-wrap gap-2">
