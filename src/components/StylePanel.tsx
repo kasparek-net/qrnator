@@ -271,7 +271,7 @@ export function StylePanel({
   return (
     <div className="space-y-6">
       <section>
-        <h3 className="text-sm font-semibold mb-3 text-[var(--foreground)]">
+        <h3 className="text-[11px] font-semibold uppercase tracking-[0.05em] text-[var(--muted)] mb-3">
           {t("style.presets")}
         </h3>
         <div className="grid grid-cols-3 gap-2">
@@ -288,7 +288,7 @@ export function StylePanel({
       </section>
 
       <section>
-        <h3 className="text-sm font-semibold mb-3">{t("style.dots")}</h3>
+        <h3 className="text-[11px] font-semibold uppercase tracking-[0.05em] text-[var(--muted)] mb-3">{t("style.dots")}</h3>
         <div className="space-y-3">
           <div>
             <Label>{t("style.dotShape")}</Label>
@@ -316,7 +316,7 @@ export function StylePanel({
       </section>
 
       <section>
-        <h3 className="text-sm font-semibold mb-3">{t("style.bg")}</h3>
+        <h3 className="text-[11px] font-semibold uppercase tracking-[0.05em] text-[var(--muted)] mb-3">{t("style.bg")}</h3>
         <div className="space-y-3">
           <Switch
             checked={style.bgTransparent}
@@ -334,7 +334,7 @@ export function StylePanel({
       </section>
 
       <section>
-        <h3 className="text-sm font-semibold mb-3">{t("style.corners")}</h3>
+        <h3 className="text-[11px] font-semibold uppercase tracking-[0.05em] text-[var(--muted)] mb-3">{t("style.corners")}</h3>
         <div className="space-y-3">
           <div>
             <Label>{t("style.frameShape")}</Label>
@@ -384,7 +384,7 @@ export function StylePanel({
       </section>
 
       <section>
-        <h3 className="text-sm font-semibold mb-3">{t("style.logo")}</h3>
+        <h3 className="text-[11px] font-semibold uppercase tracking-[0.05em] text-[var(--muted)] mb-3">{t("style.logo")}</h3>
         <div className="space-y-3">
           {style.logo ? (
             <div className="flex items-center gap-3">
@@ -448,7 +448,7 @@ export function StylePanel({
       </section>
 
       <section>
-        <h3 className="text-sm font-semibold mb-3">{t("style.frame")}</h3>
+        <h3 className="text-[11px] font-semibold uppercase tracking-[0.05em] text-[var(--muted)] mb-3">{t("style.frame")}</h3>
         <div className="space-y-3">
           <Field
             label={t("style.frameText")}
@@ -471,7 +471,7 @@ export function StylePanel({
       </section>
 
       <section>
-        <h3 className="text-sm font-semibold mb-3">{t("style.advanced")}</h3>
+        <h3 className="text-[11px] font-semibold uppercase tracking-[0.05em] text-[var(--muted)] mb-3">{t("style.advanced")}</h3>
         <div className="space-y-3">
           <Field
             label={t("style.size", { px: style.size })}

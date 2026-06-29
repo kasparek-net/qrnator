@@ -6,7 +6,7 @@ export function Label({ children, htmlFor }: { children: ReactNode; htmlFor?: st
   return (
     <label
       htmlFor={htmlFor}
-      className="block text-xs font-medium text-[var(--muted)] mb-1.5"
+      className="block text-[11px] font-semibold uppercase tracking-[0.05em] text-[var(--muted)] mb-2"
     >
       {children}
     </label>
@@ -14,7 +14,7 @@ export function Label({ children, htmlFor }: { children: ReactNode; htmlFor?: st
 }
 
 const fieldClass =
-  "w-full rounded-lg border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-sm text-[var(--foreground)] placeholder:text-[var(--muted)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/40 focus:border-[var(--primary)] transition";
+  "w-full rounded-[14px] border border-transparent bg-[var(--accent)] px-3.5 py-3 text-[15px] text-[var(--foreground)] placeholder:text-[var(--muted)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/25 focus:border-[var(--primary)]/40 transition";
 
 export function Input(props: InputHTMLAttributes<HTMLInputElement>) {
   return <input {...props} className={`${fieldClass} ${props.className ?? ""}`} />;
@@ -90,7 +90,7 @@ export function ColorPicker({
           type="color"
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className="w-9 h-9 rounded-md border border-[var(--border)] cursor-pointer overflow-hidden"
+          className="w-9 h-9 rounded-full border border-[var(--border)] cursor-pointer overflow-hidden shrink-0"
         />
         <input
           type="text"

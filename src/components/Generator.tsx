@@ -17,6 +17,7 @@ import {
   Download,
   ChevronDown,
   Save,
+  QrCode,
 } from "lucide-react";
 import { QRPreview } from "./QRPreview";
 import { QRForm } from "./QRForms";
@@ -111,104 +112,124 @@ export function Generator({
   }
 
   return (
-    <div className="grid lg:grid-cols-[minmax(0,1fr)_360px] gap-6">
-      <div className="space-y-6 min-w-0">
-        <div className="flex flex-wrap gap-1 p-1 rounded-xl bg-[var(--accent)] border border-[var(--border)]">
-          {tabs.map((tab) => {
-            const Icon = tab.icon;
-            const active = tab.type === type;
-            return (
-              <button
-                key={tab.type}
-                onClick={() => setType(tab.type)}
-                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition cursor-pointer ${
-                  active
-                    ? "bg-[var(--card)] text-[var(--foreground)] shadow-sm"
-                    : "text-[var(--muted)] hover:text-[var(--foreground)]"
-                }`}
-              >
-                <Icon className="w-3.5 h-3.5" />
-                {t(tab.key)}
-              </button>
-            );
-          })}
+    <div className="rounded-[28px] border border-[var(--border)] bg-[var(--card)] shadow-[0_1px_2px_rgba(0,0,0,0.04),0_18px_50px_rgba(0,0,0,0.08)] p-5 sm:p-8">
+      <div className="flex items-center gap-3 mb-7">
+        <div className="w-11 h-11 rounded-[13px] flex items-center justify-center text-white bg-[var(--primary)] shadow-md">
+          <QrCode className="w-6 h-6" />
         </div>
-
-        <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5">
-          <h2 className="text-sm font-semibold mb-4">{t("gen.contentTitle")}</h2>
-          <QRForm payload={payload} onChange={setPayload} />
-        </div>
-
-        <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5">
-          <h2 className="text-sm font-semibold mb-4">{t("gen.styleTitle")}</h2>
-          <StylePanel
-            style={style}
-            onChange={setStyle}
-            frameLabel={frameLabel}
-            onFrameLabelChange={setFrameLabel}
-            frameColor={frameColor}
-            onFrameColorChange={setFrameColor}
-          />
+        <div>
+          <div className="text-xl font-semibold tracking-tight leading-tight text-[var(--foreground)]">
+            QR Studio
+          </div>
+          <div className="text-sm text-[var(--muted)]">{t("gen.subtitle")}</div>
         </div>
       </div>
 
-      <div className="lg:sticky lg:top-20 self-start space-y-3">
-        <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5">
-          <QRPreview
-            data={data}
-            style={style}
-            frameLabel={frameLabel}
-            frameColor={frameColor}
-          />
-        </div>
-
-        <div className="flex gap-2">
-          <div className="relative flex-1 flex">
-            <button
-              onClick={() => handleExport("svg")}
-              disabled={exporting}
-              className="flex-1 inline-flex items-center justify-center gap-2 rounded-l-xl border border-[var(--border)] bg-[var(--foreground)] text-[var(--background)] text-sm font-semibold px-4 py-3 hover:opacity-90 disabled:opacity-50 transition cursor-pointer"
-            >
-              <Download className="w-4 h-4" />
-              {exporting ? t("gen.downloading") : t("gen.downloadSvg")}
-            </button>
-            <button
-              onClick={() => setExportMenu((v) => !v)}
-              disabled={exporting}
-              aria-label={t("gen.otherFormat")}
-              className="px-3 rounded-r-xl border border-l-0 border-[var(--border)] bg-[var(--foreground)] text-[var(--background)] hover:opacity-90 disabled:opacity-50 transition cursor-pointer"
-            >
-              <ChevronDown className="w-3.5 h-3.5" />
-            </button>
-            {exportMenu && (
-              <div className="absolute z-10 top-full mt-1 right-0 w-32 rounded-xl border border-[var(--border)] bg-[var(--card)] shadow-lg overflow-hidden">
-                {(["svg", "png", "jpg", "webp", "pdf"] as ExportFormat[]).map(
-                  (f) => (
-                    <button
-                      key={f}
-                      onClick={() => handleExport(f)}
-                      className="w-full text-left px-3 py-2 text-sm hover:bg-[var(--accent)] transition cursor-pointer uppercase tracking-wide"
-                    >
-                      {f}
-                    </button>
-                  ),
-                )}
-              </div>
-            )}
+      <div className="grid lg:grid-cols-[minmax(0,1fr)_320px] gap-7">
+        <div className="space-y-6 min-w-0 order-2 lg:order-1">
+          <div className="flex flex-wrap gap-2">
+            {tabs.map((tab) => {
+              const Icon = tab.icon;
+              const active = tab.type === type;
+              return (
+                <button
+                  key={tab.type}
+                  onClick={() => setType(tab.type)}
+                  className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-medium whitespace-nowrap transition cursor-pointer ${
+                    active
+                      ? "bg-[var(--primary)] text-white shadow-sm"
+                      : "bg-[var(--accent)] text-[var(--foreground)] hover:opacity-80"
+                  }`}
+                >
+                  <Icon className="w-3.5 h-3.5" />
+                  {t(tab.key)}
+                </button>
+              );
+            })}
           </div>
-          <button
-            onClick={handleSave}
-            title={t("gen.saveTooltip")}
-            className="inline-flex items-center justify-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--card)] text-sm font-semibold px-4 py-3 hover:bg-[var(--accent)] transition cursor-pointer"
-          >
-            <Save className="w-4 h-4" />
-            {saved ? t("gen.saved") : t("gen.save")}
-          </button>
+
+          <div>
+            <h2 className="text-[11px] font-semibold uppercase tracking-[0.05em] text-[var(--muted)] mb-3">
+              {t("gen.contentTitle")}
+            </h2>
+            <QRForm payload={payload} onChange={setPayload} />
+          </div>
+
+          <div className="h-px bg-[var(--border)]" />
+
+          <div>
+            <h2 className="text-[11px] font-semibold uppercase tracking-[0.05em] text-[var(--muted)] mb-4">
+              {t("gen.styleTitle")}
+            </h2>
+            <StylePanel
+              style={style}
+              onChange={setStyle}
+              frameLabel={frameLabel}
+              onFrameLabelChange={setFrameLabel}
+              frameColor={frameColor}
+              onFrameColorChange={setFrameColor}
+            />
+          </div>
         </div>
 
-        <p className="text-[11px] text-[var(--muted)] text-center px-2">
-          {t("gen.tip")}
-        </p>
+        <div className="lg:sticky lg:top-20 self-start space-y-3 order-1 lg:order-2">
+          <div className="rounded-[24px] border border-[var(--border)] bg-[var(--card)] p-4 shadow-[0_8px_24px_rgba(0,0,0,0.06)]">
+            <QRPreview
+              data={data}
+              style={style}
+              frameLabel={frameLabel}
+              frameColor={frameColor}
+            />
+          </div>
+
+          <div className="flex gap-2">
+            <div className="relative flex-1 flex">
+              <button
+                onClick={() => handleExport("svg")}
+                disabled={exporting}
+                className="flex-1 inline-flex items-center justify-center gap-2 rounded-l-[14px] bg-[var(--primary)] text-white text-sm font-semibold px-4 py-3 hover:opacity-90 disabled:opacity-50 transition cursor-pointer"
+              >
+                <Download className="w-4 h-4" />
+                {exporting ? t("gen.downloading") : t("gen.downloadSvg")}
+              </button>
+              <button
+                onClick={() => setExportMenu((v) => !v)}
+                disabled={exporting}
+                aria-label={t("gen.otherFormat")}
+                className="px-3 rounded-r-[14px] bg-[var(--primary)] text-white border-l border-white/20 hover:opacity-90 disabled:opacity-50 transition cursor-pointer"
+              >
+                <ChevronDown className="w-3.5 h-3.5" />
+              </button>
+              {exportMenu && (
+                <div className="absolute z-10 top-full mt-1 right-0 w-32 rounded-[14px] border border-[var(--border)] bg-[var(--card)] shadow-lg overflow-hidden">
+                  {(["svg", "png", "jpg", "webp", "pdf"] as ExportFormat[]).map(
+                    (f) => (
+                      <button
+                        key={f}
+                        onClick={() => handleExport(f)}
+                        className="w-full text-left px-3 py-2 text-sm hover:bg-[var(--accent)] transition cursor-pointer uppercase tracking-wide"
+                      >
+                        {f}
+                      </button>
+                    ),
+                  )}
+                </div>
+              )}
+            </div>
+            <button
+              onClick={handleSave}
+              title={t("gen.saveTooltip")}
+              className="inline-flex items-center justify-center gap-2 rounded-[14px] border border-[var(--border)] bg-[var(--card)] text-sm font-semibold px-4 py-3 hover:bg-[var(--accent)] transition cursor-pointer"
+            >
+              <Save className="w-4 h-4" />
+              {saved ? t("gen.saved") : t("gen.save")}
+            </button>
+          </div>
+
+          <p className="text-[11px] text-[var(--muted)] text-center px-2">
+            {t("gen.tip")}
+          </p>
+        </div>
       </div>
     </div>
   );

@@ -50,6 +50,7 @@ export const dict = {
     "footer.trademark":
       "QR Code is a registered trademark of",
 
+    "gen.subtitle": "Create a QR code in seconds",
     "gen.contentTitle": "QR code content",
     "gen.styleTitle": "Appearance",
     "gen.downloadSvg": "Download SVG",
@@ -249,6 +250,7 @@ export const dict = {
     "footer.tagline": "© {year} QRnator — I'll be back. S tvým QR.",
     "footer.trademark": "QR Code je registrovaná ochranná známka",
 
+    "gen.subtitle": "Vytvořte QR kód během chvilky",
     "gen.contentTitle": "Obsah QR kódu",
     "gen.styleTitle": "Vzhled",
     "gen.downloadSvg": "Stáhnout SVG",
