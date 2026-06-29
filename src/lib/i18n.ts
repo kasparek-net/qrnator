@@ -1,0 +1,423 @@
+export type Locale = "en" | "cs";
+
+export const dict = {
+  en: {
+    "meta.title": "QRnator — The QR Code Terminator",
+    "meta.desc":
+      "Terminate ugly QR codes. Custom design, logos, frames, export to SVG, PNG and PDF. Free, no signup.",
+
+    "nav.generator": "Generator",
+    "nav.scanner": "Scanner",
+    "nav.history": "History",
+    "nav.theme": "Toggle color scheme",
+    "nav.lang": "Change language",
+
+    "hero.badge": "Free. No signup. No tracking.",
+    "hero.title": "The QR Code",
+    "hero.title.accent": "Terminator",
+    "hero.subtitle":
+      "13 QR types. Logo, frame, full custom design. Export to SVG, PNG, JPG, WebP, PDF. Runs entirely in your browser — nothing leaves your device. Ugly QR codes — terminated.",
+
+    "feature.live.title": "Live preview",
+    "feature.live.text":
+      "Changes appear instantly. No waiting frustration.",
+    "feature.privacy.title": "Privacy first",
+    "feature.privacy.text":
+      "Everything is generated locally. No server, no analytics.",
+    "feature.free.title": "Free forever",
+    "feature.free.text":
+      "No paywall, no limits, no signup. No tricks.",
+
+    "faq.title": "Frequently asked questions",
+    "faq.q1": "Will my QR code expire?",
+    "faq.a1":
+      "No. A generated QR code is static and works forever. If you put a link in it that stops existing, only the link breaks — not the QR code.",
+    "faq.q2": "Can I use the QR code commercially?",
+    "faq.a2":
+      "Yes. Generated codes can be used for free, personally or commercially. QR Code® is a trademark of DENSO WAVE, the technology itself is freely available.",
+    "faq.q3": "Why put a logo on a QR code?",
+    "faq.a3":
+      "A logo improves recognition and trust. Scanners handle it thanks to error correction (Reed-Solomon). We recommend level “H” and a logo up to ~30% of the area.",
+    "faq.q4": "Which format should I download for print?",
+    "faq.a4":
+      "SVG or PDF — they are vector and won't pixelate. PNG is great for the web, JPG/WebP for smaller files.",
+    "faq.q5": "Does the site track what I create?",
+    "faq.a5":
+      "No. Generation happens in your browser. History is stored only in your localStorage.",
+
+    "footer.tagline":
+      "© {year} QRnator — I'll be back. With your QR.",
+    "footer.trademark":
+      "QR Code is a registered trademark of",
+
+    "gen.contentTitle": "QR code content",
+    "gen.styleTitle": "Appearance",
+    "gen.downloadSvg": "Download SVG",
+    "gen.downloading": "Downloading…",
+    "gen.otherFormat": "Other format",
+    "gen.save": "Save",
+    "gen.saved": "Saved",
+    "gen.saveTooltip": "Save to browser history",
+    "gen.tip":
+      "SVG is best for print, PNG for web, PDF for flyers. Saved codes stay in your browser.",
+
+    "tab.link": "Link",
+    "tab.text": "Text",
+    "tab.email": "Email",
+    "tab.phone": "Phone",
+    "tab.sms": "SMS",
+    "tab.whatsapp": "WhatsApp",
+    "tab.skype": "Skype",
+    "tab.zoom": "Zoom",
+    "tab.wifi": "WiFi",
+    "tab.vcard": "vCard",
+    "tab.event": "Event",
+    "tab.paypal": "PayPal",
+    "tab.bitcoin": "Bitcoin",
+
+    "form.link.label": "URL",
+    "form.link.hint": "Link that opens after scanning.",
+    "form.text.label": "Text",
+    "form.text.ph": "Any text…",
+    "form.email.to": "Recipient email",
+    "form.email.subject": "Subject",
+    "form.email.body": "Message",
+    "form.phone.label": "Phone number",
+    "form.phone.hint": "Include the international prefix, e.g. +1…",
+    "form.sms.phone": "Phone number",
+    "form.sms.message": "Message text",
+    "form.wa.phone": "Phone number",
+    "form.wa.phoneHint": "Digits only, no + sign.",
+    "form.wa.message": "Pre-filled message",
+    "form.skype.user": "Skype user",
+    "form.skype.action": "Action",
+    "form.skype.chat": "Chat",
+    "form.skype.call": "Call",
+    "form.zoom.id": "Meeting ID",
+    "form.zoom.password": "Password (optional)",
+    "form.wifi.ssid": "Network name (SSID)",
+    "form.wifi.password": "Password",
+    "form.wifi.encryption": "Encryption",
+    "form.wifi.nopass": "No password",
+    "form.wifi.hidden": "Hidden network",
+    "form.vcard.firstName": "First name",
+    "form.vcard.lastName": "Last name",
+    "form.vcard.org": "Company",
+    "form.vcard.title": "Job title",
+    "form.vcard.phone": "Phone",
+    "form.vcard.email": "Email",
+    "form.vcard.website": "Website",
+    "form.vcard.address": "Address",
+    "form.event.title": "Event title",
+    "form.event.location": "Location",
+    "form.event.start": "Start",
+    "form.event.end": "End",
+    "form.event.desc": "Description",
+    "form.paypal.email": "PayPal email",
+    "form.paypal.amount": "Amount",
+    "form.paypal.currency": "Currency",
+    "form.btc.address": "Bitcoin address",
+    "form.btc.amount": "Amount (BTC)",
+    "form.btc.label": "Label",
+
+    "style.presets": "Style presets",
+    "preset.classic": "Classic",
+    "preset.modern": "Modern",
+    "preset.sunset": "Sunset",
+    "preset.ocean": "Ocean",
+    "preset.forest": "Forest",
+    "preset.noir": "Noir",
+
+    "style.dots": "Dots",
+    "style.dotShape": "Dot shape",
+    "style.gradient": "Gradient",
+    "style.gradient.none": "No gradient",
+    "style.gradient.linear": "Linear",
+    "style.gradient.radial": "Radial",
+    "style.color1": "Color 1",
+    "style.color2": "Color 2",
+    "style.dot.square": "Squares",
+    "style.dot.dots": "Dots",
+    "style.dot.rounded": "Rounded",
+    "style.dot.extraRounded": "Extra rounded",
+    "style.dot.classy": "Classy",
+    "style.dot.classyRounded": "Classy rounded",
+
+    "style.bg": "Background",
+    "style.transparent": "Transparent background",
+    "style.bgColor": "Background color",
+
+    "style.corners": "Corners",
+    "style.frameShape": "Frame shape",
+    "style.centerShape": "Center shape",
+    "style.frameColor": "Frame color",
+    "style.centerColor": "Center color",
+    "corner.square": "Square",
+    "corner.dot": "Dot",
+    "corner.extraRounded": "Rounded",
+
+    "style.logo": "Logo",
+    "style.logoUpload": "Upload logo (PNG/SVG, up to 1 MB)",
+    "style.logoRemove": "Remove",
+    "style.logoSize": "Logo size: {pct}%",
+    "style.hideDotsBehindLogo": "Hide dots behind logo",
+
+    "style.frame": "Frame with text",
+    "style.frameText": "Frame text (optional)",
+    "style.frameTextHint": "e.g. “SCAN ME”",
+    "style.frameTextPh": "SCAN ME",
+    "style.frameColorLabel": "Frame color",
+
+    "style.advanced": "Advanced",
+    "style.size": "Size: {px}px",
+    "style.sizeHint": "Bigger = better export quality.",
+    "style.errorCorrection": "Error correction",
+    "style.ecHint": "H = highest resilience (recommended with logo).",
+    "ec.L": "L — smallest",
+    "ec.M": "M — medium",
+    "ec.Q": "Q — high",
+    "ec.H": "H — highest",
+
+    "scanner.title": "QR code scanner",
+    "scanner.subtitle":
+      "Use your device camera or upload an image with a QR code.",
+    "scanner.notActive": "Camera is not active",
+    "scanner.start": "Start camera",
+    "scanner.stop": "Stop",
+    "scanner.upload": "Upload image",
+    "scanner.error.camera":
+      "Camera is not available. Check permissions or try uploading an image.",
+    "scanner.error.image": "No valid QR code was found in the image.",
+    "scanner.result": "Result",
+    "scanner.copy": "Copy",
+    "scanner.copied": "Copied",
+    "scanner.open": "Open",
+
+    "history.title": "History",
+    "history.subtitle":
+      "Your saved QR codes. Everything is stored only in your browser.",
+    "history.empty.title": "Nothing saved yet",
+    "history.empty.text":
+      "Click “Save” in the generator and the QR code will show up here.",
+    "history.clearAll": "Clear all",
+    "history.confirmClear": "Clear all history?",
+    "history.downloadPng": "Download PNG",
+    "history.delete": "Delete",
+  },
+  cs: {
+    "meta.title": "QRnator — Terminátor QR kódů",
+    "meta.desc":
+      "Likvidujeme ošklivé QR kódy. Loga, rámečky, custom design, export do SVG, PNG i PDF. Zdarma, bez registrace.",
+
+    "nav.generator": "Generátor",
+    "nav.scanner": "Skener",
+    "nav.history": "Historie",
+    "nav.theme": "Přepnout barevný režim",
+    "nav.lang": "Změnit jazyk",
+
+    "hero.badge": "Zdarma. Bez registrace. Bez sledování.",
+    "hero.title": "Terminátor",
+    "hero.title.accent": "QR kódů",
+    "hero.subtitle":
+      "13 typů QR. Logo, rámeček, plný custom design. Export do SVG, PNG, JPG, WebP, PDF. Vše běží ve vašem prohlížeči — nic neopouští váš počítač. Ošklivé QR kódy — zlikvidované.",
+
+    "feature.live.title": "Live náhled",
+    "feature.live.text": "Změny se promítají okamžitě. Bez frustrace z čekání.",
+    "feature.privacy.title": "Soukromí na první místě",
+    "feature.privacy.text":
+      "Vše se generuje lokálně. Žádný server, žádná analytika.",
+    "feature.free.title": "Zdarma navždy",
+    "feature.free.text": "Bez paywallu, bez limitů, bez registrace. Žádné triky.",
+
+    "faq.title": "Často kladené otázky",
+    "faq.q1": "Vyprší časem můj QR kód?",
+    "faq.a1":
+      "Ne. Vygenerovaný QR kód je statický a funguje navždy. Pokud do něj umístíte odkaz, který přestane existovat, přestane fungovat ten odkaz — ne QR kód.",
+    "faq.q2": "Můžu QR kód použít komerčně?",
+    "faq.a2":
+      "Ano. Vygenerované kódy můžete používat zdarma osobně i komerčně. QR Code® je ochranná známka DENSO WAVE, samotná technologie je volně dostupná.",
+    "faq.q3": "Proč dát na QR kód logo?",
+    "faq.a3":
+      "Logo zvyšuje rozpoznatelnost a důvěru. Skenery to zvládají díky korekci chyb (Reed-Solomon). Doporučujeme úroveň „H“ a logo do ~30 % plochy.",
+    "faq.q4": "Jaký formát stáhnout pro tisk?",
+    "faq.a4":
+      "SVG nebo PDF — jsou vektorové a nezpůsobí pixelace. PNG je ideální pro web, JPG/WebP pro úspornější soubory.",
+    "faq.q5": "Sleduje stránka, co tvořím?",
+    "faq.a5":
+      "Ne. Generování probíhá v prohlížeči. Historie kódů se ukládá pouze do vašeho localStorage.",
+
+    "footer.tagline": "© {year} QRnator — I'll be back. S tvým QR.",
+    "footer.trademark": "QR Code je registrovaná ochranná známka",
+
+    "gen.contentTitle": "Obsah QR kódu",
+    "gen.styleTitle": "Vzhled",
+    "gen.downloadSvg": "Stáhnout SVG",
+    "gen.downloading": "Stahuju…",
+    "gen.otherFormat": "Jiný formát",
+    "gen.save": "Uložit",
+    "gen.saved": "Uloženo",
+    "gen.saveTooltip": "Uložit do historie v prohlížeči",
+    "gen.tip":
+      "SVG je nejlepší pro tisk, PNG pro web, PDF pro letáky. Uložené kódy zůstanou ve vašem prohlížeči.",
+
+    "tab.link": "Odkaz",
+    "tab.text": "Text",
+    "tab.email": "E-mail",
+    "tab.phone": "Telefon",
+    "tab.sms": "SMS",
+    "tab.whatsapp": "WhatsApp",
+    "tab.skype": "Skype",
+    "tab.zoom": "Zoom",
+    "tab.wifi": "WiFi",
+    "tab.vcard": "vCard",
+    "tab.event": "Událost",
+    "tab.paypal": "PayPal",
+    "tab.bitcoin": "Bitcoin",
+
+    "form.link.label": "URL adresa",
+    "form.link.hint": "Odkaz na web, který se otevře po naskenování.",
+    "form.text.label": "Text",
+    "form.text.ph": "Libovolný text…",
+    "form.email.to": "E-mail příjemce",
+    "form.email.subject": "Předmět",
+    "form.email.body": "Zpráva",
+    "form.phone.label": "Telefonní číslo",
+    "form.phone.hint": "Včetně mezinárodní předvolby, např. +420…",
+    "form.sms.phone": "Telefonní číslo",
+    "form.sms.message": "Text zprávy",
+    "form.wa.phone": "Telefonní číslo",
+    "form.wa.phoneHint": "Bez znaků +, čistá čísla.",
+    "form.wa.message": "Předvyplněná zpráva",
+    "form.skype.user": "Skype uživatel",
+    "form.skype.action": "Akce",
+    "form.skype.chat": "Chat",
+    "form.skype.call": "Hovor",
+    "form.zoom.id": "ID schůzky",
+    "form.zoom.password": "Heslo (volitelné)",
+    "form.wifi.ssid": "Název sítě (SSID)",
+    "form.wifi.password": "Heslo",
+    "form.wifi.encryption": "Šifrování",
+    "form.wifi.nopass": "Bez hesla",
+    "form.wifi.hidden": "Skrytá síť",
+    "form.vcard.firstName": "Jméno",
+    "form.vcard.lastName": "Příjmení",
+    "form.vcard.org": "Firma",
+    "form.vcard.title": "Pozice",
+    "form.vcard.phone": "Telefon",
+    "form.vcard.email": "E-mail",
+    "form.vcard.website": "Web",
+    "form.vcard.address": "Adresa",
+    "form.event.title": "Název události",
+    "form.event.location": "Místo",
+    "form.event.start": "Začátek",
+    "form.event.end": "Konec",
+    "form.event.desc": "Popis",
+    "form.paypal.email": "PayPal e-mail",
+    "form.paypal.amount": "Částka",
+    "form.paypal.currency": "Měna",
+    "form.btc.address": "Bitcoin adresa",
+    "form.btc.amount": "Částka (BTC)",
+    "form.btc.label": "Label",
+
+    "style.presets": "Šablony stylů",
+    "preset.classic": "Klasické",
+    "preset.modern": "Moderní",
+    "preset.sunset": "Sunset",
+    "preset.ocean": "Ocean",
+    "preset.forest": "Forest",
+    "preset.noir": "Noir",
+
+    "style.dots": "Tečky",
+    "style.dotShape": "Tvar teček",
+    "style.gradient": "Gradient",
+    "style.gradient.none": "Bez gradientu",
+    "style.gradient.linear": "Lineární",
+    "style.gradient.radial": "Radiální",
+    "style.color1": "Barva 1",
+    "style.color2": "Barva 2",
+    "style.dot.square": "Čtverce",
+    "style.dot.dots": "Tečky",
+    "style.dot.rounded": "Zaoblené",
+    "style.dot.extraRounded": "Velmi zaoblené",
+    "style.dot.classy": "Klasické",
+    "style.dot.classyRounded": "Klasické zaoblené",
+
+    "style.bg": "Pozadí",
+    "style.transparent": "Průhledné pozadí",
+    "style.bgColor": "Barva pozadí",
+
+    "style.corners": "Rohy",
+    "style.frameShape": "Tvar rámu",
+    "style.centerShape": "Tvar středu",
+    "style.frameColor": "Barva rámu",
+    "style.centerColor": "Barva středu",
+    "corner.square": "Čtverec",
+    "corner.dot": "Tečka",
+    "corner.extraRounded": "Zaoblené",
+
+    "style.logo": "Logo",
+    "style.logoUpload": "Nahrát logo (PNG/SVG, do 1 MB)",
+    "style.logoRemove": "Odebrat",
+    "style.logoSize": "Velikost loga: {pct}%",
+    "style.hideDotsBehindLogo": "Skrýt tečky za logem",
+
+    "style.frame": "Rámeček s textem",
+    "style.frameText": "Text rámečku (nepovinné)",
+    "style.frameTextHint": "Např. „NASKENUJ MĚ“",
+    "style.frameTextPh": "NASKENUJ MĚ",
+    "style.frameColorLabel": "Barva rámečku",
+
+    "style.advanced": "Pokročilé",
+    "style.size": "Velikost: {px}px",
+    "style.sizeHint": "Větší = lepší kvalita po exportu.",
+    "style.errorCorrection": "Korekce chyb",
+    "style.ecHint": "H = nejvyšší odolnost (doporučeno s logem).",
+    "ec.L": "L — nejmenší",
+    "ec.M": "M — střední",
+    "ec.Q": "Q — vysoká",
+    "ec.H": "H — nejvyšší",
+
+    "scanner.title": "Skener QR kódů",
+    "scanner.subtitle":
+      "Použijte kameru zařízení nebo nahrajte obrázek s QR kódem.",
+    "scanner.notActive": "Kamera není aktivní",
+    "scanner.start": "Spustit kameru",
+    "scanner.stop": "Zastavit",
+    "scanner.upload": "Nahrát obrázek",
+    "scanner.error.camera":
+      "Kamera není dostupná. Zkontrolujte povolení nebo zkuste nahrát obrázek.",
+    "scanner.error.image": "V obrázku nebyl nalezen platný QR kód.",
+    "scanner.result": "Výsledek",
+    "scanner.copy": "Kopírovat",
+    "scanner.copied": "Zkopírováno",
+    "scanner.open": "Otevřít",
+
+    "history.title": "Historie",
+    "history.subtitle":
+      "Vaše uložené QR kódy. Vše se ukládá pouze do vašeho prohlížeče.",
+    "history.empty.title": "Zatím nic neuložené",
+    "history.empty.text":
+      "V generátoru klikněte na „Uložit“ a QR kód se objeví zde.",
+    "history.clearAll": "Smazat vše",
+    "history.confirmClear": "Smazat celou historii?",
+    "history.downloadPng": "Stáhnout PNG",
+    "history.delete": "Smazat",
+  },
+} as const;
+
+export type Key = keyof typeof dict.en;
+
+export function translate(
+  locale: Locale,
+  key: Key,
+  vars?: Record<string, string | number>,
+): string {
+  const table = dict[locale] ?? dict.en;
+  let s: string = table[key] ?? dict.en[key] ?? key;
+  if (vars) {
+    for (const [k, v] of Object.entries(vars)) {
+      s = s.replace(`{${k}}`, String(v));
+    }
+  }
+  return s;
+}
