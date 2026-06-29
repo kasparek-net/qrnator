@@ -1,7 +1,7 @@
 "use client";
 
 import { Sparkles, ShieldCheck, Zap, Heart } from "lucide-react";
-import { QRStudio } from "./QRStudio";
+import { Generator } from "./Generator";
 import { useI18n } from "@/lib/i18n-context";
 
 export function Landing() {
@@ -22,8 +22,8 @@ export function Landing() {
         </p>
       </section>
 
-      <section className="max-w-3xl mx-auto px-4 pb-10">
-        <QRStudio />
+      <section className="max-w-6xl mx-auto px-4 pb-10">
+        <Generator />
       </section>
 
       <section className="max-w-6xl mx-auto px-4 py-10">
